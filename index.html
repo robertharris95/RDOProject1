@@ -3,12 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- linking the Foundation css library  -->
+    <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
     <link rel="stylesheet" type ="text/css"  href="style.css">
-    <title>Project-One</title>
+    <title>Loqal</title>
 </head>
 <body>
-    <h1>Welcome to the start of your future</h1>
+<!-- Template from Foundation  -->
+<!-- Start Top Bar -->
+<div class="top-bar">
+        <div class="row">
+          <div class="top-bar-left">
+            <ul class="dropdown menu" data-dropdown-menu>
+              <li class="menu-text">Loqal</li>
+            </ul>
+          </div>
+          <div class="top-bar-right">
+            <ul class="menu">
+              <li><input type="search" placeholder="Search"></li>
+              <li><button type="button" class="button">Search</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- End Top Bar -->
+      <br>
+      
+  
+      <div class="row">
+        <div class="medium-6 columns">
+          <img class="thumbnail artist-image" src="">
+        </div>
+        <div class="medium-6 large-5 columns">
+          <h3 class="artist-name">
+
+          </h3>
+
+          <p class="artist-describe">
+
+          </p>
+  
+          
+  
+          
+  
+          <a href="#" class="button large expanded">See Them Live</a>
+  
+          </div>
+      </div>
+  
+      <div class="column row">
+        <hr>
+        <ul class="tabs" data-tabs id="example-tabs">
+          <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Artists like <span class="artist-name"> </span></a></li>
+        </ul>
+        <div class="tabs-content" data-tabs-content="example-tabs">
+          <div class="tabs-panel is-active" id="panel1">
+            <h4>Artists like <span class="artist-name"> </span></h4>
+            <div class="media-object stack-for-small">
+              <div class="media-object-section">
+                <img class="thumbnail" src="" class="similarartist">
+              </div>
+              <div class="media-object-section">
+                <h5 class="similarartistname"></h5>
+                <p class="similarArtistDescribe"></p>
+                <button class="button">See Them Live</button>
+              </div>
+            </div>
+            <div class="media-object stack-for-small">
+              <div class="media-object-section">
+                <img class="thumbnail" src="" class="similarartist">
+              </div>
+              <div class="media-object-section">
+                <h5 class="similarartistname"></h5>
+                <p class="similarArtistDescribe"></p>
+                <button class="button">See Them Live</button>
+              </div>
+            </div>
+            <div class="media-object stack-for-small">
+              <div class="media-object-section">
+                <img class="thumbnail" src="" class="similarartist">
+              </div>
+              <div class="media-object-section">
+                <h5 class="similarartistname"></h5>
+                <p class="similarArtistDescribe"></p>
+                <button class="button">See Them Live</button>
+              </div>
+            </div>
+        </div>
+        </div>
+      </div>
+  
+      <div class="row column">
+        <hr>
+        <ul class="menu">
+          <li><span><b>Loqal LLC</b></span> DEVS:</li>
+          <li><a href="https://github.com/dupudenisa">Denisa</a></li>
+          <li><a href="https://github.com/robertharris95">Robbie</a></li>
+          <li><a href="https://github.com/Ghalileo">Ose</a></li>
+          <li class="float-right">Copyright 2020</li>
+        </ul>
+      </div>
+
+
+
+
+
+<!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
     <script src ="script.js"></script>
+    <script>
+        $(document).foundation();
+    </script>
 </body>
 </html>

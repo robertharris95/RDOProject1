@@ -30,9 +30,12 @@ $.ajax({
     method: "GET"
 
 }).then(function (response) {
-    var artistName = response[4].user.username;
-    console.log(response[4].user.username);
+    var artistName = response[0].user.username;
+    var description = response[0].user.caption;
+    console.log(response[0].user.username);
     console.log(artistName);
+    console.log(response[0].user.caption);
+    console.log(description);
 
     $("#media-object-section").text("")
     $("#similarArtistname").text("")

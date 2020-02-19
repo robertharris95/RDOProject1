@@ -9,22 +9,30 @@ $("search").click(function () {
 
 })
 
-var urlSpot = "" 
 
 
 
 
+
+
+var urlHeartArt = "https://api-v2.hearthis.at/shawne/?type=likes&page=1&count=5"
 
 
 
 $.ajax({
-    url: urlHeart,
+    url: urlHeartArt,
     method: "GET"
 
-}).then(function (urlHeart) {
+}).then(function (response) {
 
-    console.log(urlHeart);
+    console.log(response);
+    
+    console.log(response[0].genre);
 
+   
+   
+   
+   
     $("#media-object-section").text("")
     $("#similarArtistname").text("")
     $("#similarArtistDescribe").text("")

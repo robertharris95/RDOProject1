@@ -1,7 +1,55 @@
 // On clicking the search button 
 
 var genreArr = ["techno","indie","rock","Techno","jazz","country"];
-$(".genreOfDay").text(genreArr[Math.floor(Math.random()*genreArr.length)])
+shuffle(genreArr)
+
+for (let i = 1; i<5; i++) {
+ 
+$(".GenreOfDay"+i).text(genreArr[i]);
+}
+
+// $(".GenreOfDay").text(genreArr[Math.floor(Math.random()*genreArr.length)])
+//};
+
+//genreArr.randomseed(os.time());
+
+// function shuffle(genreArr) {
+//   var i = 0
+//   var j = 0
+//   var temp = null 
+//  for (let i = genreArr.length - 1; i > 0; i-=1) {
+//    const j = Math.floor(Math.random() * (i+1));
+//    temp = genreArr[i]
+//    genreArr[i] = genreArr[j]
+//    genreArr[j] = temp 
+//  }}
+
+
+
+//  var randNum;
+
+//  For(let i = 1;i<5;i++) {
+
+// randNum = Math.floor(Math.random()*genreArr.length);
+
+//  $(“.GenreOfDay”).text(genreArr[randNum]);
+
+//  }
+   
+   
+   
+   
+   //console.log(j)
+ // }
+  //return genreArr;
+ // var genreArr = MIN + Math.random() * (MAX - (lastRandom !== undefined)) | 0;
+ // if (genreArr === lastgenreArr) genreArr = MAX;
+  //lastgenreArr = genreArr;
+ 
+
+
+
+
 
 $(".searchBtn").on("click",function(e) {
 e.preventDefault();
@@ -42,5 +90,5 @@ var urlHeart =  "https://api-v2.hearthis.at/categories/"+genre+"/?page="+Math.fl
    $(".similarartist3").attr("src",response[3].thumb)
    $(".similarArtistButton3").attr("href",response[3].permalink_url)
    $(".similarArtistname3").text(response[3].user.username)
-})
 });
+})

@@ -24,3 +24,9 @@ body {
 .billboard:hover {
     background-color: black;
 }
+.enterSite {
+    margin-right: 125px;
+}
+.enterSite:hover {
+    background-color: crimson;
+}

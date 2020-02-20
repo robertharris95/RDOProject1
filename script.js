@@ -1,12 +1,15 @@
 // On clicking the search button 
 
-var genreArr = ["techno","indie","rock","Techno","jazz","country"];
-$(".genreOfDay").text(genreArr[Math.floor(Math.random()*genreArr.length)])
+var genreArr = ["Techno","Indie","Rock",,"Jazz","Country","Experimental"];
+for(let i =1; i<5; i++){
+$(".GenreOfDay"+i).text(genreArr[Math.floor(Math.random()*genreArr.length)])
+};
 
-$(".searchBtn").on("click",function(e) {
+$(document).on("click",".searchBtn",function(e) {
 e.preventDefault();
 
-  var genre = this.text
+  var genre = $(this).text();
+  console.log(genre);
   genre = genre.replace(/\s/g,'').toLowerCase();
 
 

@@ -1,5 +1,5 @@
 body {
-    background-image: url('https://images.unsplash.com/photo-1502773860571-211a597d6e4b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
+    background-image: url('https://images.unsplash.com/photo-1447160430190-9d1cae0b73db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1048&q=80');
 }
 .homeTitle {
     text-align: center;
@@ -17,4 +17,10 @@ body {
 }
 .button:hover {
     background-color: blueviolet;
+}
+.GenreM:hover {
+    background-color: blue;
+}
+.billboard:hover {
+    background-color: black;
 }

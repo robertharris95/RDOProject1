@@ -47,3 +47,51 @@ var urlHeart =  "https://api-v2.hearthis.at/categories/"+genre+"/?page="+Math.fl
    $(".similarArtistname3").text(response[3].user.username)
 })
 });
+
+$(document).on("click",".billboard",function(e) {
+e.preventDefault();
+var lastWeek = moment().subtract(7, 'days').format("YYYY-MM-DD");
+//From Rapid API
+var settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://billboard-api2.p.rapidapi.com/hot-100?date="+ lastWeek+ "&range=1-4",
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "billboard-api2.p.rapidapi.com",
+		"x-rapidapi-key": "c4651f2781msh4e201642fafd400p16948cjsn15af5c0c8c81"
+	}
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+    
+    var artistname = response.content[1].artist;
+    var track = response.content[1].title;
+    var track1 =response.content[2].title
+    track1 = track1.replace(/ /g, '+').toLowerCase();
+    var track2 =response.content[3].title
+    track2 = track2.replace(/ /g, '+').toLowerCase();
+    var track3 =response.content[4].title
+    track3 = track3.replace(/ /g, '+').toLowerCase();
+    //Change description to description from response
+   $(".artist-name").text(artistname)
+   track = track.replace(/ /g, '+').toLowerCase();
+   $(".artist-describe").text(track)
+   $(".mainartistBtn").attr("href",)
+
+
+
+   $(".similarArtistButton1").attr("href","https://www.youtube.com/result?search_query="+track1);
+   $(".similarArtistname1").text(response.content[2].artist);
+
+   
+   $(".similarArtistButton2").attr("href","https://www.youtube.com/result?search_query="+track2);
+   $(".similarArtistname2").text(response.content[3].artist);
+
+   
+   $(".similarArtistButton3").attr("href","https://www.youtube.com/result?search_query="+track3);
+   $(".similarArtistname3").text(response.content[4].artist);
+
+});
+});

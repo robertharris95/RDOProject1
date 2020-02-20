@@ -1,8 +1,13 @@
 // On clicking the search button 
 
 var genreArr = ["Techno","Indie","Rock",,"Jazz","Country","Experimental"];
+//shuffle function from javascriptinfo.com
+function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+  }  
+shuffle(genreArr)
 for(let i =1; i<5; i++){
-$(".GenreOfDay"+i).text(genreArr[Math.floor(Math.random()*genreArr.length)])
+$(".GenreOfDay"+i).text(genreArr[i])
 };
 
 $(document).on("click",".searchBtn",function(e) {
@@ -23,7 +28,34 @@ var urlHeart =  "https://api-v2.hearthis.at/categories/"+genre+"/?page="+Math.fl
      method: "GET"
 }).then(function(response) {
     //Variables for the users artistName and Description
-    console.log(response);
+    // to clear other formatting
+    $(".artist-describe").text("")
+    $(".artist-name").text("")
+ 
+    $(".artist-image").attr("src","")
+    
+    $(".mainartistBtn").attr("href","")
+ 
+     $(".player").attr("src", "")
+ 
+     
+ 
+ 
+    $(".similarartist1").attr("src","")
+    $(".similarartist1").attr("visibility","none")
+    $(".similarArtistButton1").attr("href","")
+    $(".similarArtistname1").text("")
+ 
+    $(".similarartist2").attr("src","")
+    $(".similarArtistButton2").attr("href","")
+    $(".similarArtistname2").text("")
+ 
+    $(".similarartist3").attr("src","")
+    $(".similarArtistButton3").attr("href","")
+    $(".similarArtistname3").text("")
+
+
+    
     var artistname = response[0].user.username;
     var description = response[0].user.caption
     //Change description to description from response
@@ -32,7 +64,12 @@ var urlHeart =  "https://api-v2.hearthis.at/categories/"+genre+"/?page="+Math.fl
 
    $(".artist-image").attr("src",response[0].thumb)
    $(".mainartistBtn").attr("href",response[0].permalink_url)
+if(response[0].preview_url !== null){
     $(".player").attr("src", response[0].preview_url)
+}
+else{
+    $(".player").attr("visibility", "none")
+}
 
    $(".similarartist1").attr("src",response[1].thumb)
    $(".similarArtistButton1").attr("href",response[1].permalink_url)
@@ -66,6 +103,8 @@ var settings = {
 $.ajax(settings).done(function (response) {
     console.log(response);
     
+
+
     var artistname = response.content[1].artist;
     var track = response.content[1].title;
     var track1 =response.content[2].title
@@ -74,11 +113,46 @@ $.ajax(settings).done(function (response) {
     track2 = track2.replace(/ /g, '+').toLowerCase();
     var track3 =response.content[4].title
     track3 = track3.replace(/ /g, '+').toLowerCase();
+
+
+
+//clear all other formatting that may not apply 
+
+    $(".artist-describe").text("")
+   $(".artist-name").text("")
+
+   $(".artist-image").attr("src","")
+   
+   $(".mainartistBtn").attr("href","")
+
+    $(".player").attr("src", "")
+
+    
+
+
+   $(".similarartist1").attr("src","")
+   $(".similarartist1").attr("visibility","none")
+   $(".similarArtistButton1").attr("href","")
+   $(".similarArtistname1").text("")
+
+   $(".similarartist2").attr("src","")
+   $(".similarArtistButton2").attr("href","")
+   $(".similarArtistname2").text("")
+
+   $(".similarartist3").attr("src","")
+   $(".similarArtistButton3").attr("href","")
+   $(".similarArtistname3").text("")
+
+   $(".artist-image").attr("visibility","none")
+   $(".similarartist3").attr("visibility","none")
+   $(".player").attr("visibility", "none")
+   $(".similarartist2").attr("visibility","none")
+
     //Change description to description from response
    $(".artist-name").text(artistname)
-   track = track.replace(/ /g, '+').toLowerCase();
    $(".artist-describe").text(track)
-   $(".mainartistBtn").attr("href",)
+   track = track.replace(/ /g, '+').toLowerCase();
+   $(".mainartistBtn").attr("href","https://www.youtube.com/result?search_query="+track)
 
 
 

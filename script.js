@@ -1,21 +1,16 @@
 // On clicking the search button 
+
+var genreArr = ["techno","indie","rock","Techno","jazz","country"];
+$(".genreOfDay").text(genreArr[Math.floor(Math.random()*genreArr.length)])
+
 $(".searchBtn").on("click",function(e) {
 e.preventDefault();
 
-// Variables
-var input = $(".search").val();
-input = input.replace(/\s/g,'').toLowerCase();
-//Call using page input to get genre
-var urlHeartArt = "https://api-v2.hearthis.at/"+ input +"/?type=likes&page=1&count=5"
-
-$.ajax({
-  url:urlHeartArt,
-  method:"GET"
-  
-}).then(function(response){
-//   console.log(response)
-  var genre = response[0].genre
+  var genre = this.text
   genre = genre.replace(/\s/g,'').toLowerCase();
+
+
+
 
 // Call using genre to get random artist 
 
@@ -48,5 +43,4 @@ var urlHeart =  "https://api-v2.hearthis.at/categories/"+genre+"/?page="+Math.fl
    $(".similarArtistButton3").attr("href",response[3].permalink_url)
    $(".similarArtistname3").text(response[3].user.username)
 })
-});
 });

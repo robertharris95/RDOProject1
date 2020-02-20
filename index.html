@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <div style ="background-image: url('https://images.unsplash.com/photo-1502773860571-211a597d6e4b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');"></div>
     <br>
     <br>
     <br>
@@ -23,20 +24,18 @@
             <br>
             <div class="top-bar-right">
                 <ul class="menu homeMenu">
-                    <li><button type="button" class="button searchBtn GenreOfDay1">Play</button></li>
-                    <li><button type="button" class="button searchBtn GenreOfDay2">Play</button></li>
-                    <li><button type="button" class="button searchBtn GenreOfDay3">Play</button></li>
-                    <li><button type="button" class="button searchBtn GenreOfDay4">Play</button></li>
+
+                    <li><button onclick="window.location.href = 'main.html'" type="button" class="button searchBtn enterSite">Enter</button></li>
+                    
+
                 </ul>
             </div>
         </div>
-        <hr>
-        <h2 class = "homeTitle">Top-Hits</h2>
-        <p><button type="button" class="button searchBtn GenreOfDay" id="topPick">Billboard</button></p>
     </div>
     <!-- Top Bar End -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="script.js"></script>
     <script>
         $(document).foundation();

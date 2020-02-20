@@ -1,60 +1,20 @@
 // On clicking the search button 
 
-var genreArr = ["techno","indie","rock","Techno","jazz","country"];
+var genreArr = ["Techno","Indie","Rock",,"Jazz","Country","Experimental"];
+//shuffle function from javascriptinfo.com
+function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+  }  
 shuffle(genreArr)
+for(let i =1; i<5; i++){
+$(".GenreOfDay"+i).text(genreArr[i])
+};
 
-for (let i = 1; i<5; i++) {
- 
-$(".GenreOfDay"+i).text(genreArr[i]);
-}
-
-// $(".GenreOfDay").text(genreArr[Math.floor(Math.random()*genreArr.length)])
-//};
-
-//genreArr.randomseed(os.time());
-
-// function shuffle(genreArr) {
-//   var i = 0
-//   var j = 0
-//   var temp = null 
-//  for (let i = genreArr.length - 1; i > 0; i-=1) {
-//    const j = Math.floor(Math.random() * (i+1));
-//    temp = genreArr[i]
-//    genreArr[i] = genreArr[j]
-//    genreArr[j] = temp 
-//  }}
-
-
-
-//  var randNum;
-
-//  For(let i = 1;i<5;i++) {
-
-// randNum = Math.floor(Math.random()*genreArr.length);
-
-//  $(“.GenreOfDay”).text(genreArr[randNum]);
-
-//  }
-   
-   
-   
-   
-   //console.log(j)
- // }
-  //return genreArr;
- // var genreArr = MIN + Math.random() * (MAX - (lastRandom !== undefined)) | 0;
- // if (genreArr === lastgenreArr) genreArr = MAX;
-  //lastgenreArr = genreArr;
- 
-
-
-
-
-
-$(".searchBtn").on("click",function(e) {
+$(document).on("click",".searchBtn",function(e) {
 e.preventDefault();
 
-  var genre = this.text
+  var genre = $(this).text();
+  console.log(genre);
   genre = genre.replace(/\s/g,'').toLowerCase();
 
 
@@ -68,7 +28,34 @@ var urlHeart =  "https://api-v2.hearthis.at/categories/"+genre+"/?page="+Math.fl
      method: "GET"
 }).then(function(response) {
     //Variables for the users artistName and Description
-    console.log(response);
+    // to clear other formatting
+    $(".artist-describe").text("")
+    $(".artist-name").text("")
+ 
+    $(".artist-image").attr("src","")
+    
+    $(".mainartistBtn").attr("href","")
+ 
+     $(".player").attr("src", "")
+ 
+     
+ 
+ 
+    $(".similarartist1").attr("src","")
+    $(".similarartist1").attr("visibility","none")
+    $(".similarArtistButton1").attr("href","")
+    $(".similarArtistname1").text("")
+ 
+    $(".similarartist2").attr("src","")
+    $(".similarArtistButton2").attr("href","")
+    $(".similarArtistname2").text("")
+ 
+    $(".similarartist3").attr("src","")
+    $(".similarArtistButton3").attr("href","")
+    $(".similarArtistname3").text("")
+
+
+    
     var artistname = response[0].user.username;
     var description = response[0].user.caption
     //Change description to description from response
@@ -77,7 +64,12 @@ var urlHeart =  "https://api-v2.hearthis.at/categories/"+genre+"/?page="+Math.fl
 
    $(".artist-image").attr("src",response[0].thumb)
    $(".mainartistBtn").attr("href",response[0].permalink_url)
+if(response[0].preview_url !== null){
     $(".player").attr("src", response[0].preview_url)
+}
+else{
+    $(".player").attr("visibility", "none")
+}
 
    $(".similarartist1").attr("src",response[1].thumb)
    $(".similarArtistButton1").attr("href",response[1].permalink_url)
@@ -91,4 +83,88 @@ var urlHeart =  "https://api-v2.hearthis.at/categories/"+genre+"/?page="+Math.fl
    $(".similarArtistButton3").attr("href",response[3].permalink_url)
    $(".similarArtistname3").text(response[3].user.username)
 });
-})
+
+$(document).on("click",".billboard",function(e) {
+e.preventDefault();
+var lastWeek = moment().subtract(7, 'days').format("YYYY-MM-DD");
+//From Rapid API
+var settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://billboard-api2.p.rapidapi.com/hot-100?date="+ lastWeek+ "&range=1-4",
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "billboard-api2.p.rapidapi.com",
+		"x-rapidapi-key": "c4651f2781msh4e201642fafd400p16948cjsn15af5c0c8c81"
+	}
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+    
+
+
+    var artistname = response.content[1].artist;
+    var track = response.content[1].title;
+    var track1 =response.content[2].title
+    track1 = track1.replace(/ /g, '+').toLowerCase();
+    var track2 =response.content[3].title
+    track2 = track2.replace(/ /g, '+').toLowerCase();
+    var track3 =response.content[4].title
+    track3 = track3.replace(/ /g, '+').toLowerCase();
+
+
+
+//clear all other formatting that may not apply 
+
+    $(".artist-describe").text("")
+   $(".artist-name").text("")
+
+   $(".artist-image").attr("src","")
+   
+   $(".mainartistBtn").attr("href","")
+
+    $(".player").attr("src", "")
+
+    
+
+
+   $(".similarartist1").attr("src","")
+   $(".similarartist1").attr("visibility","none")
+   $(".similarArtistButton1").attr("href","")
+   $(".similarArtistname1").text("")
+
+   $(".similarartist2").attr("src","")
+   $(".similarArtistButton2").attr("href","")
+   $(".similarArtistname2").text("")
+
+   $(".similarartist3").attr("src","")
+   $(".similarArtistButton3").attr("href","")
+   $(".similarArtistname3").text("")
+
+   $(".artist-image").attr("visibility","none")
+   $(".similarartist3").attr("visibility","none")
+   $(".player").attr("visibility", "none")
+   $(".similarartist2").attr("visibility","none")
+
+    //Change description to description from response
+   $(".artist-name").text(artistname)
+   $(".artist-describe").text(track)
+   track = track.replace(/ /g, '+').toLowerCase();
+   $(".mainartistBtn").attr("href","https://www.youtube.com/result?search_query="+track)
+
+
+
+   $(".similarArtistButton1").attr("href","https://www.youtube.com/result?search_query="+track1);
+   $(".similarArtistname1").text(response.content[2].artist);
+
+   
+   $(".similarArtistButton2").attr("href","https://www.youtube.com/result?search_query="+track2);
+   $(".similarArtistname2").text(response.content[3].artist);
+
+   
+   $(".similarArtistButton3").attr("href","https://www.youtube.com/result?search_query="+track3);
+   $(".similarArtistname3").text(response.content[4].artist);
+
+});
+});

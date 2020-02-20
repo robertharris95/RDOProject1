@@ -24,6 +24,14 @@ body {
 .billboard:hover {
     background-color: black;
 }
+
+.enterSite {
+    margin-right: 125px;
+}
+.enterSite:hover {
+    background-color: crimson;
+}
+
 .results-area{
     opacity: 0.95;
 }
@@ -32,3 +40,4 @@ body {
     background-color: white;
     opacity: 0.5;
 }
+

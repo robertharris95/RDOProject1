@@ -100,18 +100,15 @@ var settings = {
 }
 
 $.ajax(settings).done(function (response) {
-    console.log(response);
     
-
-
     var artistname = response.content[1].artist;
     var track = response.content[1].title;
     var track1 =response.content[2].title
-    track1 = track1.replace(/ /g, '+').toLowerCase();
+    
     var track2 =response.content[3].title
-    track2 = track2.replace(/ /g, '+').toLowerCase();
+    
     var track3 =response.content[4].title
-    track3 = track3.replace(/ /g, '+').toLowerCase();
+    
 
 
 
@@ -150,21 +147,75 @@ $.ajax(settings).done(function (response) {
     //Change description to description from response
    $(".artist-name").text(artistname)
    $(".artist-describe").text(track)
-   track = track.replace(/ /g, '+').toLowerCase();
-   $(".mainartistBtn").attr("href","https://www.youtube.com/result?search_query="+track)
+   track = track.replace(/ /g, '%20').toLowerCase();
+   
 
 
-
-   $(".similarArtistButton1").attr("href","https://www.youtube.com/result?search_query="+track1);
+   $(".similarArtistTrack1").text(track1);
+   track1 = track1.replace(/ /g, '%20').toLowerCase();
    $(".similarArtistname1").text(response.content[2].artist);
+  
 
-   
-   $(".similarArtistButton2").attr("href","https://www.youtube.com/result?search_query="+track2);
+   $(".similarArtistTrack2").text(track2);
+   track2 = track2.replace(/ /g, '%20').toLowerCase();
    $(".similarArtistname2").text(response.content[3].artist);
-
    
-   $(".similarArtistButton3").attr("href","https://www.youtube.com/result?search_query="+track3);
+
+   $(".similarArtistTrack3").text(track3);
+   track3 = track3.replace(/ /g, '%20').toLowerCase();
    $(".similarArtistname3").text(response.content[4].artist);
+   
+
+    var tubeUrlmain = "https://www.googleapis.com/youtube/v3/search?part=snippet&q="+ track + "&key=AIzaSyD08HwnwabQOd301PPQP9RW6yL5BjwqA4g"
+    var tubeUrl1 = "https://www.googleapis.com/youtube/v3/search?part=snippet&q="+ track1 + "&key=AIzaSyD08HwnwabQOd301PPQP9RW6yL5BjwqA4g"
+    var tubeUrl2 = "https://www.googleapis.com/youtube/v3/search?part=snippet&q="+ track2 + "&key=AIzaSyD08HwnwabQOd301PPQP9RW6yL5BjwqA4g"
+    var tubeUrl3 = "https://www.googleapis.com/youtube/v3/search?part=snippet&q="+ track3 + "&key=AIzaSyD08HwnwabQOd301PPQP9RW6yL5BjwqA4g"
+console.log(tubeUrlmain);
+console.log(tubeUrl1);
+console.log(tubeUrl2);
+console.log(tubeUrl3);
+    // main button youtube 
+    $.ajax({
+        url: tubeUrlmain,
+        method:"GET"
+    }).then(function(response){
+        console.log(response);
+        $(".mainartistBtn").attr("href","https://www.youtube.com/watch?v=" + response.items[0].id.videoId);
+
+    })
+
+    // first button youtube 
+    $.ajax({
+        url: tubeUrl1,
+        method:"GET"
+    }).then(function(response){
+        console.log(response);
+
+        $(".similarArtistButton1").attr("href","https://www.youtube.com/watch?v=" + response.items[0].id.videoId);
+
+    })
+
+    // second button youtube 
+    $.ajax({
+        url: tubeUrl2,
+        method:"GET"
+    }).then(function(response){
+        console.log(response);
+
+        $(".similarArtistButton2").attr("href","https://www.youtube.com/watch?v=" + response.items[0].id.videoId);
+
+    })
+
+    // third button youtube 
+    $.ajax({
+        url: tubeUrl3,
+        method:"GET"
+    }).then(function(response){
+        console.log(response);
+
+        $(".similarArtistButton3").attr("href","https://www.youtube.com/watch?v=" + response.items[0].id.videoId);
+
+    })
 
 });
 });

@@ -1,5 +1,6 @@
-// On clicking the search button 
 
+
+// On clicking the search button 
 var genreArr = ["Techno","Indie","Rock",,"Jazz","Country","Experimental"];
 //shuffle function from javascriptinfo.com
 function shuffle(array) {
@@ -16,7 +17,6 @@ e.preventDefault();
   var genre = $(this).text();
   console.log(genre);
   genre = genre.replace(/\s/g,'').toLowerCase();
-
 
 
 
@@ -82,8 +82,8 @@ else{
    $(".similarartist3").attr("src",response[3].thumb)
    $(".similarArtistButton3").attr("href",response[3].permalink_url)
    $(".similarArtistname3").text(response[3].user.username)
+})
 });
-
 $(document).on("click",".billboard",function(e) {
 e.preventDefault();
 var lastWeek = moment().subtract(7, 'days').format("YYYY-MM-DD");

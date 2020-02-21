@@ -25,9 +25,7 @@ body {
     background-color: black;
 }
 
-.enterSite {
-    margin-right: 125px;
-}
+
 .enterSite:hover {
     background-color: crimson;
 }
@@ -41,3 +39,16 @@ body {
     opacity: 0.5;
 }
 
+.buttonDiv{
+    text-align: center;
+}
+.resize {
+    width:100px;
+    height: auto;
+
+}
+.resize {
+    width:50px;
+    height: auto;
+    
+}
